@@ -67,7 +67,7 @@ let todoItems = items.length > 0 && (
             </Grid>
             
             <Grid item>
-                <Button color="inherit" raised onClick={signout}>
+                <Button color="inherit"  onClick={signout}>
                   로그아웃
                 </Button>
             </Grid>             
