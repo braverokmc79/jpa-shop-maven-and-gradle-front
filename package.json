@@ -2,6 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://braverokmc79.github.io/jpa-shop-maven-and-gradle-front",
   "engines": {
     "node": "20.11.1"
   },
@@ -47,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-transform-class-properties": "^7.23.3"
+    "@babel/plugin-transform-class-properties": "^7.23.3",
+    "gh-pages": "^6.1.1"
   }
 }
