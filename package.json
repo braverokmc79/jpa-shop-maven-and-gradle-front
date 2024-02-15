@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "14.16.0"
+    "node": "20.11.1"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -19,7 +19,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
-    "vite": "^5.1.1",
+    "vite": "^5.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -45,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-class-properties": "^7.23.3"
   }
 }
