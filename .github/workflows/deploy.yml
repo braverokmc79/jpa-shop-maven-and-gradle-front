@@ -16,8 +16,11 @@ jobs:
 
     - name: Install dependencies and build 
       run: |
-        npm install
-        npm build
+        rm -rf jpa-shop-maven-and-gradle-front/
+        git clone https://github.com/braverokmc79/jpa-shop-maven-and-gradle-front.git
+        cd jpa-shop-maven-and-gradle-front/ 
+        npm run install
+        npm run build
      
     # ubuntu 서버에 접속하여 빌드파일을 전송하고 배포된 파일을 교체
     - name: Copy build directory to server
