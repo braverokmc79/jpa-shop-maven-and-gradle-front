@@ -34,5 +34,5 @@ jobs:
         password: ${{ secrets.REACT_SERVER_PASSWORD }}
         port: ${{ secrets.REACT_SERVER_PORT }}
         script: | 
-             'cd /home/react/jpa-shop-maven-and-gradle-front && ls -ltr'
-             'git pull'
+             'cd /home/react/jpa-shop-maven-and-gradle-front && ls -ltr  && git pull'
+             
