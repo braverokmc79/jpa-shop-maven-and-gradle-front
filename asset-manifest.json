@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/jpa-shop-maven-and-gradle-front/static/css/main.f855e6bc.css",
+    "main.js": "/jpa-shop-maven-and-gradle-front/static/js/main.cb5894f0.js",
+    "static/js/444.b6dc458c.chunk.js": "/jpa-shop-maven-and-gradle-front/static/js/444.b6dc458c.chunk.js",
+    "static/js/592.07f8bd7a.chunk.js": "/jpa-shop-maven-and-gradle-front/static/js/592.07f8bd7a.chunk.js",
+    "static/js/304.1e524e6f.chunk.js": "/jpa-shop-maven-and-gradle-front/static/js/304.1e524e6f.chunk.js",
+    "index.html": "/jpa-shop-maven-and-gradle-front/index.html",
+    "main.f855e6bc.css.map": "/jpa-shop-maven-and-gradle-front/static/css/main.f855e6bc.css.map",
+    "main.cb5894f0.js.map": "/jpa-shop-maven-and-gradle-front/static/js/main.cb5894f0.js.map",
+    "444.b6dc458c.chunk.js.map": "/jpa-shop-maven-and-gradle-front/static/js/444.b6dc458c.chunk.js.map",
+    "592.07f8bd7a.chunk.js.map": "/jpa-shop-maven-and-gradle-front/static/js/592.07f8bd7a.chunk.js.map",
+    "304.1e524e6f.chunk.js.map": "/jpa-shop-maven-and-gradle-front/static/js/304.1e524e6f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.cb5894f0.js"
+  ]
+}
