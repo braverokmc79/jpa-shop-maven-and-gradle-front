@@ -36,6 +36,7 @@ jobs:
         script: 'cd /home/react/jpa-shop-maven-and-gradle-front 
                  && ls -ltr  
                  && sudo git pull
+                 && npm run build
                  && sudo systemctl restart nginx'
        
              
