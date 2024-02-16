@@ -14,7 +14,7 @@ jobs:
   # 배포작업  "deploy"
   deploy:
     # 작업이 실행될 실행기 유형
-    runs-on: ubuntu-latest   #ubuntu-latest
+    runs-on: 22.04.3   #ubuntu-latest  우분트 버전 입력
 
     # 단계는 작업의 일부로 실행될 일련의 작업을 나타냅니다.
     steps:
