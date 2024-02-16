@@ -23,7 +23,7 @@ jobs:
         password: ${{ secrets.REACT_SERVER_PASSWORD }}
         port: ${{ secrets.REACT_SERVER_PORT }}
         source: "./build/*"
-        target: "/home/react/"
+        target: "/home/react/jpa-shop-maven-and-gradle-front/"
         script: sudo systemctl restart nginx 
         
     - name: Install dependencies and build 

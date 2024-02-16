@@ -16,8 +16,15 @@ jobs:
     # 작업이 실행될 실행기 유형
     runs-on: ubuntu-latest   # 작업환경 : Ubuntu 최신버전 18 , 22  등 버전입력 하면 작동 안될수 있음
 
+
+
     # 단계는 작업의 일부로 실행될 일련의 작업을 나타냅니다.
     steps:
+    
+      # Build 전 pre-code-check (코드 검사)
+    - name: Checkout code
+      uses: actions/checkout@v2 
+
     # 배포 셸을 사용하여 단일 명령을 실행합니다.
     - name: Deploy
       uses: appleboy/ssh-action@v0.1.10
@@ -27,13 +34,8 @@ jobs:
         password: ${{ secrets.REACT_SERVER_PASSWORD }}
         port: ${{ secrets.REACT_SERVER_PORT }}
         source: "./build/*"
-        target: "/home/react/"
+        target: "/home/react/jpa-shop-maven-and-gradle-front/"
         script: sudo systemctl restart nginx 
 
-    - name: Install dependencies and build 
-      run: |
-            rm -rf jpa-shop-maven-and-gradle-front/
-            git clone https://github.com/braverokmc79/jpa-shop-maven-and-gradle-front.git
-            cd jpa-shop-maven-and-gradle-front/ 
-            npm run install
-            npm run build
+
+
