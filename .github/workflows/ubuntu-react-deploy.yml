@@ -33,12 +33,5 @@ jobs:
         username: ${{ secrets.REACT_SERVER_USER }}
         password: ${{ secrets.REACT_SERVER_PASSWORD }}
         port: ${{ secrets.REACT_SERVER_PORT }}
-        source: "./build/*"
-        target: "/home/react/jpa-shop-maven-and-gradle-front/"       
-
-        
-    - name: Install dependencies and build 
-      run: |         
-            git pull
-            npm run build
-            sudo systemctl restart nginx   
+        script: 'cd /home/react/jpa-shop-maven-and-gradle-front && ls -ltr'
+   
