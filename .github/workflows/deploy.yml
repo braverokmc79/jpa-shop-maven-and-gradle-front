@@ -1,4 +1,4 @@
-name: Deploy Macaronics React App  
+name: Deploy Macaronics React App  2
 
 on:
   push:
@@ -31,5 +31,5 @@ jobs:
         password: ${{ secrets.REACT_SERVER_PASSWORD }}
         port: ${{ secrets.REACT_SERVER_PORT }}
         source: "./build/*"
-        target: "/home/react/jpa-shop-maven-and-gradle-front/"
+        target: "/home/react/"
         script: sudo systemctl restart nginx 
