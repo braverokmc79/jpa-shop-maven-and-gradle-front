@@ -14,7 +14,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2 
 
-	   #필요한 package를 설치하고 build
+      
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '21'
+        registry-url: 'https://registry.npmjs.org'
+
     - name: Install dependencies and build 
       run: |
         npm run install
