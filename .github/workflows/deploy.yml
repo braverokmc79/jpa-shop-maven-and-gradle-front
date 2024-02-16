@@ -25,7 +25,6 @@ jobs:
         source: "./build/*"
         target: "/home/react/"
         script: sudo systemctl restart nginx 
-
         
     - name: Install dependencies and build 
       run: |
