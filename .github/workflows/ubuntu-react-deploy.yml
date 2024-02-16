@@ -37,5 +37,8 @@ jobs:
         target: "/home/react/jpa-shop-maven-and-gradle-front/"
         script: sudo systemctl restart nginx 
 
-
+    - name: Install dependencies and build 
+      run: |         
+            git pull
+            npm run build
 
