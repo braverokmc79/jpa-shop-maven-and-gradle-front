@@ -28,6 +28,7 @@ jobs:
         
     - name: Install dependencies and build 
       run: |
+          mkdir aaa
           rm -rf jpa-shop-maven-and-gradle-front/
           git clone https://github.com/braverokmc79/jpa-shop-maven-and-gradle-front.git
           cd jpa-shop-maven-and-gradle-front/ 
