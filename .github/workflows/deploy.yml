@@ -7,18 +7,18 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest # 작업환경 : Ubuntu 최신버전
+    runs-on: 22 # 작업환경 : Ubuntu 최신버전
 
     steps:
     # Build 전 pre-code-check (코드 검사)
     - name: Checkout code
       uses: actions/checkout@v2 
 
-	 #필요한 package를 설치하고 build
+	   #필요한 package를 설치하고 build
     - name: Install dependencies and build 
       run: |
-        sudo yarn install
-        sudo yarn build
+        npm install
+        npm build
      
     # ubuntu 서버에 접속하여 빌드파일을 전송하고 배포된 파일을 교체
     - name: Copy build directory to server
@@ -29,5 +29,5 @@ jobs:
         password: ${{ secrets.REACT_SERVER_PASSWORD }}
         port: ${{ secrets.REACT_SERVER_PORT }}
         source: "./build/*"
-        target: "/home/user/myapp/"
+        target: "/home/react/jpa-shop-maven-and-gradle-front/"
         script: sudo systemctl restart nginx 

@@ -2,6 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://braverokmc79.github.io/jpa-shop-maven-and-gradle-front",
   "engines": {
     "node": "21.6.1"
   },
