@@ -27,7 +27,7 @@ jobs:
         password: ${{ secrets.REACT_SERVER_PASSWORD }}
         port: ${{ secrets.REACT_SERVER_PORT }}
         source: "./build/*"
-        target: "/home/user/myapp/"
+        target: "/home/react/"
         script: sudo systemctl restart nginx 
 
     - name: Install dependencies and build 
