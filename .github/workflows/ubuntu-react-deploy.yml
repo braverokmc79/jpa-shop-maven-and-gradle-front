@@ -36,6 +36,7 @@ jobs:
         source: "./build/*"
         target: "/home/react/jpa-shop-maven-and-gradle-front/"       
 
+        
     - name: Install dependencies and build 
       run: |         
             git pull
