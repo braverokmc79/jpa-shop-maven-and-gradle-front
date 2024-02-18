@@ -5,6 +5,7 @@ import App from './App'
 import Copyright from './components/Copyright';
 import Login from './pages/Login';
 import SinUp from './pages/SinUp';
+import SocialLogin from './pages/SocialLogin';
 
 
 const AppRouter = () => {
@@ -15,8 +16,9 @@ const AppRouter = () => {
             <Route path='/' element={<App  />} />
             <Route path='/login' element={<Login  />} />
             <Route path='/signup' element={<SinUp  />} />
+            <Route path='/sociallogin' element={<SocialLogin  />} />
         </Routes>
-
+        
 
         <Box mt={5}>
             <Copyright />

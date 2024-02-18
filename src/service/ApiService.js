@@ -1,4 +1,5 @@
 
+import { ConstructionOutlined } from '@mui/icons-material';
 import {API_BASE_URL} from '../api-config';
 
 export function call(api, method, request) {
@@ -6,6 +7,8 @@ export function call(api, method, request) {
 
     //로컬 스토리지에서 ACCESS TOKEN 가져오기
     const accessToken=localStorage.getItem('ACCESS_TOKEN');
+    console.log(" accessToken   :",accessToken);
+
     if(accessToken && accessToken !==null){
         headers.append('Authorization', "Bearer "+accessToken);
     }
@@ -32,7 +35,7 @@ export function call(api, method, request) {
             if(res.status===200){
                 return res.json();
             }else if(res.status===403 || res.status===401){
-                window.location.href ="/login"
+              //  window.location.href ="/login"
                 
             }else{
                 // Promise.reject(res);
@@ -65,6 +68,7 @@ export function call(api, method, request) {
 
         }).catch((err)=>{
             console.log(" 에러  :", err);
+            window.location.href ="/login";  
         });
 
 
@@ -92,16 +96,24 @@ export function signin(UserDTO){
         });
 }
 
-
 export function signout(){
     localStorage.setItem("ACCESS_TOKEN",null);
     window.location.href ="/login";
 }
 
 export function signup(userDTO){
-    return call("/api/auth/signup", "POST", userDTO);
-    
+    return call("/api/auth/signup", "POST", userDTO);   
 }
+
+
+//소셜 로그인
+export function socialLogin(provider){
+    console.log("social login :", provider , window.location.origin);
+    const frontendUrl=window.location.protocol+"//"+window.location.host;
+    window.location.href =API_BASE_URL +"/auth/authorize/"+provider+"?redirect_url="+frontendUrl;
+}
+
+
 
 
 export default call;
