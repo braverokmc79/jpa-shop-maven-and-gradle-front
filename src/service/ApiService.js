@@ -58,7 +58,7 @@ export async function call(url, mehtod, request){
         }         
     }).catch((error) => {
         console.log("에러 ", error);
-       // window.location.href="/login";
+        window.location.href="/login";
     });
 
 }
@@ -170,8 +170,13 @@ export function signup(userDTO){
     return call("/api/auth/signup", "POST", userDTO)
 }
 
+
 //oauth2 로그인 
 export function socialLogin(provider){
-    const frontedUrl =window.location.protocol+"//"+window.location.host;
+    let frontedUrl =window.location.protocol+"//"+window.location.host;
+    const hostname =window && window.location && window.location.hostname;
+    if(hostname!=="localhost"){
+        frontedUrl="https://ma7front.p-e.kr";
+    }    
     window.location.href=API_BASE_URL+"/api/auth/authorize/"+provider +"?redirect_url="+frontedUrl;
 }
