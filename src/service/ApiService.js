@@ -180,6 +180,5 @@ export function socialLogin(provider){
     }else{
         frontedUrl="https://ma7front.p-e.kr";
     }
-    frontedUrl="https://ma7front.p-e.kr";
     window.location.href=API_BASE_URL+"/api/auth/authorize/"+provider +"?redirect_url="+frontedUrl;
 }
