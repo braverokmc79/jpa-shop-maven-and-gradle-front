@@ -173,10 +173,13 @@ export function signup(userDTO){
 
 //oauth2 로그인 
 export function socialLogin(provider){
-    let frontedUrl =window.location.protocol+"//"+window.location.host;
+    let frontedUrl="http://localhost:3000";
     const hostname =window && window.location && window.location.hostname;
-    if(hostname!=="localhost"){
-        frontedUrl="https://ma7front.p-e.kr";
-    }    
+    if(hostname==="localhost"){
+        frontedUrl="http://localhost:3000";
+    }else{
+        frontedUrl="https://ma7server.p-e.kr";
+    }
+    
     window.location.href=API_BASE_URL+"/api/auth/authorize/"+provider +"?redirect_url="+frontedUrl;
 }
