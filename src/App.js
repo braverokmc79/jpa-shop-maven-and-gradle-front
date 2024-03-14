@@ -6,76 +6,88 @@ import AddTodo from "./components/AddTodo";
 import {call, signout} from "./service/ApiService";
 
 function App() {
-  const [items, setSetItems] = useState([]);
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() =>{
-    call("/todo", "GET", null).then(res=>{      
-      if(res && res.data){
-        setSetItems(res.data)
-        setLoading(false);
-      }} 
-    );
+    call("/api/todo", "GET", null).then((res) => {
+      console.log("1.데이터 목록 불러오기 " ,res);
+      if(res==="invalid"){  
+        window.location.href="/login";
+      }else{
+        if(res&& res.data){
+          console.log("2.데이터 목록 불러오기 " ,res.data);
+          setItems(res.data)
+          setLoading(false);  
+        }
+      }
+      
+    });
+
     
  },[]);
 
   const addItem = (item) => {
-    // item.id = "ID-" + items.length; //key 를 위한 ID
-    // item.done = false; //done 초기화
-    //setSetItems([...items, item]);
-    //console.log("items : ",items);
-    call("/todo", "POST", item).then(res=>setSetItems(res.data));
+    call("/api/todo", "POST", item).then(res=>setItems(res.data));
     
   };
 
   const deleteItem = (item) => {
-    // const newItems = items.filter((e) => e.id !== item.id);
-    // setSetItems([...newItems]);
-    call("/todo", "DELETE", item).then(res=>setSetItems(res.data));
+    call("/api/todo", "DELETE", item).then(res=>setItems(res.data));
   };
 
  const editItem=(item)=>{
-    // setSetItems([...items]);
-    // console.log("저장 ");
     console.log(item);
     if(item){
-      call("/todo", "PUT", item).then(res=>{
+      call("/api/todo", "PUT", item).then(res=>{
         if(res && res.data){
-          setSetItems(res.data)}
+          setItems(res.data)}
         } 
       );
     }
 };
 
-let todoItems = items.length > 0 && (
-    <Paper style={{ marginTop: 16 }}>
-      <List>
-        {items.map((item) => (
-          <Todo porpItem={item} key={item.id} deleteItem={deleteItem}   editItem={editItem} />
-        ))}
-      </List>
-    </Paper>
-  );
+
+let todoItems = items && items.length > 0 && (
+  <Paper style={{ margin: 16 }}>
+    <List>
+      {items.map((item) => {
+        return (
+          <Todo
+            key={item.todoId}
+            inputItem={item}              
+            editItem={editItem}
+            deleteItem={deleteItem}
+          />
+        );
+      })}
+    </List>
+  </Paper>
+);
+
 
  //navigationBar 추가
  let navigationBar =(
-    <AppBar postion="static"  style={{ marginBottom: 300 }}>
-       <Toolbar>
-          <Grid justifyContent="space-between" container>
-            <Grid item>
-                <Typography variant="h6">오늘의 할일</Typography>
-            </Grid>
-            
-            <Grid item>
-                <Button color="inherit"  onClick={signout}>
-                  로그아웃
-                </Button>
-            </Grid>             
-
+  <AppBar postion="static"  style={{ marginBottom: 300 }}>
+     <Toolbar>
+        <Grid justifyContent="space-between" container>
+          <Grid item>
+              <Typography variant="h6">오늘의 할일</Typography>
           </Grid>
-       </Toolbar>
-    </AppBar>
- );
+          
+          <Grid item>
+              <Button color="inherit"  onClick={signout}>
+  
+                로그아웃
+              </Button>
+          </Grid>             
+
+        </Grid>
+     </Toolbar>
+  </AppBar>
+);
+
+
 
   // 로딩중이 아닐 때 랜더링할 부분
   let todoListPage=(
@@ -94,16 +106,16 @@ let todoItems = items.length > 0 && (
   let content=loadingPage;
 
   if(!loading){
-    // 로딩중이 아니라면 todoListPage 를 선택
-    content=todoListPage;
+      // 로딩중이 아니라면 todoListPage 를 선택
+      content=todoListPage;
   }
+ 
 
-  return (
-    <div className="App">  {content}   </div>
-  );
-
+    return (
+      <div className="App">
+        {content}
+      </div>
+    );
 }
 
 export default App;
-
-
