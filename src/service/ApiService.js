@@ -178,7 +178,7 @@ export function socialLogin(provider){
     if(hostname==="localhost"){
         frontedUrl="http://localhost:3000";
     }else{
-        frontedUrl="https://ma7server.p-e.kr";
+        frontedUrl="https://ma7front.p-e.kr";
     }
     
     window.location.href=API_BASE_URL+"/api/auth/authorize/"+provider +"?redirect_url="+frontedUrl;
