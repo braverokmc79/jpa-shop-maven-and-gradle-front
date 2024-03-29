@@ -50,7 +50,8 @@ export function callApi(url, method, request, noThen){
                         }                  
                     }                    
                    
-                    sinOut();                    
+                    sinOut();
+                    return;                  
                 }
             }                
         } catch (error) {
