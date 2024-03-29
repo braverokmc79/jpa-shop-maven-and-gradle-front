@@ -1,68 +1,69 @@
-import { Checkbox, IconButton, InputBase,  ListItem, ListItemSecondaryAction, ListItemText } from '@mui/material';
-import React, { useState } from 'react'
+import { Checkbox, IconButton, InputBase, ListItem, ListItemSecondaryAction, ListItemText } from "@mui/material";
 import { DeleteOutlineOutlined } from "@mui/icons-material";
+import { useState } from "react";
 
-const Todo = ({ inputItem , editItem , deleteItem}) => {
+const Todo = ({ getItem, editItem,   deleteItem }) => {
+  const [item, setItem] = useState(getItem);
   const [readOnly, setReadOnly] = useState(true);
-  const [item, setItem] =useState(inputItem);
+  
 
-  const turnOffReadOnly =()=>{
+
+  const turnOffReadOnely=()=>{
     setReadOnly(false);
   }
 
-  //엔터키 누르면 저장
-  const turnOnReadOnly =(e)=>{
+  const editEventHandler =(e)=>{
+    setItem({...item, title: e.target.value})
+  }
+
+
+  const checkboxEventHandler =(e)=>{
+    const v= e.target.checked;
+    item.done = v;
+    setReadOnly(v);
+    editItem(item);    
+  }
+
+
+  //엔터키 클릭시 저장
+  const turnOnReadOnely=(e)=>{
     if(e.key==="Enter" && readOnly===false){
-      setReadOnly(true);
+      setReadOnly(true);     
       editItem(item);
     }
+    
   }
 
-  //포커스 bure 일경우 저장
-  const editOnBlur =(e)=>{
-    setReadOnly(true);
-    editItem(item);
-  }
 
-  const editEventHandler =(e)=>{
-    setItem({...item, title:e.target.value});
-  }
-
-  
-  const checkBoxHandler=(e)=>{
-    item.done = e.target.checked;
-    editItem(item);
-  }
-
-  
   return (
-    <ListItem  className={readOnly ? 'input' :''}>
-      <Checkbox checked={item.done}  onChange={checkBoxHandler} />
-
+    <ListItem className={readOnly ? "input" :''}>
+      <Checkbox checked={item.done}  onChange={checkboxEventHandler} />
       <ListItemText>
         <InputBase
-          inputProps={{ "aria-label": "naked" , readOnly: readOnly }}
-          onClick={turnOffReadOnly}
-          onKeyDown={turnOnReadOnly}
+          inputProps={{"aria-label" : "naked", 
+          readOnly:readOnly}}
           type="text"
-          id={item.id}
-          name={item.id}
+          id={item.todoId.toString()}
+          name={item.todoId.toString()}
           value={item.title}
           multiline={true}
           fullWidth={true}
-          onChange={editEventHandler}
-          onBlur={editOnBlur}
-        />
 
+          onChange={editEventHandler}
+          onClick={turnOffReadOnely}
+          onKeyDown={turnOnReadOnely}  
+                    
+        />
       </ListItemText>
       <ListItemSecondaryAction>
-        <IconButton aria-label="Delete Todo" onClick={()=>deleteItem(item)} >
-        <DeleteOutlineOutlined />
-
-        </IconButton>
+         <IconButton aria-label="Delete Todo"  onClick={()=>deleteItem(item)} >
+           <DeleteOutlineOutlined  />
+         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
   );
 };
+
+
 
 export default Todo;

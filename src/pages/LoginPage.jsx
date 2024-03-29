@@ -1,25 +1,26 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material'
 import React from 'react'
-import { signin, socialLogin } from '../service/ApiService';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { signIn } from '../config/ApiService';
+import { API_BASE_URL } from '../api-config';
 
-const Login = () => {
+const LoginPage = () => {
 
-  console.log("로그인 페이지");
-  
-  const handleSubmit=(e)=>{
+  const handleSubmit=(event)=>{
+    event.preventDefault();
+    const fd=new FormData(event.target);
+    const param=Object.fromEntries(fd.entries());
 
-    e.preventDefault();
-    const data=new FormData(e.target);
-    const username=data.get("username");
-    const password=data.get("password");
-  
-    signin({username, password});    
+    
+    console.log("param :",param);
+    signIn(param);
   }
 
 
-  const handleSocialLogin=(provider)=>{
-     socialLogin(provider);
+
+
+  const handleSocialLogin =(provider)=>{
+    window.location.href=API_BASE_URL+"/api/auth/authorize/"+provider;
   }
 
 
@@ -67,11 +68,11 @@ const Login = () => {
                   <Button type='submit' fullWidth variant='contained' color="primary" >로그인</Button>
                 </Grid>
 
-                <Grid item xs={12}>
+                 <Grid item xs={12}>
                   <Button  
                     onClick={()=>handleSocialLogin('github')}
                     fullWidth variant='contained' color="primary"   style={{background:'#000', marginBottom:'10px'}}   >깃허브로 로그인하기</Button>
-                </Grid>
+                </Grid> 
 
 
                 <Grid container justify="flex-end">
@@ -85,6 +86,8 @@ const Login = () => {
        </form>
     </Container>
   )
+
+
 }
 
-export default Login
+export default LoginPage

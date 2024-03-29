@@ -1,22 +1,22 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material'
 import React from 'react'
-import { signup } from '../service/ApiService';
+import { signUp } from '../config/ApiService';
 import { Link } from 'react-router-dom';
 
 const SinUp = () => {
  
     const handleSubmit=(e)=>{
-
         e.preventDefault();
         const data=new FormData(e.target);
         const username=data.get("username");
         const email=data.get("email");
         const password=data.get("password");
       
-        signup({username, email , password}).then(res=>{
-                console.log("  signup res :", res);
-                //계정 생성 성공시 login 페이지로 리다이렉트
-                window.location.href="/login";
+        signUp({username, email , password}).then(res=>{
+                if(res){
+                     //계정 생성 성공시 login 페이지로 리다이렉트
+                     window.location.href="/login";
+                }              
             }
         )
       }
